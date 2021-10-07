@@ -43,6 +43,14 @@ export const TodoReducer = (state, action) => {
         return item;
       });
       return { ...state, todo: {list: listUpdateT, item: {}} }
+    case 'edit-item':
+      const todoUpEdit = state.todo;
+      todoUpEdit.item = action.item;
+      return { ...state, todo: todoUpEdit }
+    case 'cancel-edit':
+      const todoCancel = state.todo;
+      todoCancel.item = action.item;
+      return { ...state, todo: todoCancel }
     default:
       return state;
   }

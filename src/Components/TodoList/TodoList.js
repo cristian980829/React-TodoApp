@@ -4,7 +4,6 @@ import { TodoContext } from './TodoContext';
 
 export const TodoList = () => {
   const { state: { todo } } = useContext(TodoContext);
-  const item = todo.item;
   const currentList = todo.list;
 
   useEffect( ()=> {
@@ -17,8 +16,7 @@ export const TodoList = () => {
       currentList.map((todo) => (
       <TodoListItem
         key={todo.id}
-        todo={todo}
-        item={item}
+        currentTodo={todo}
       />
     ))
     }

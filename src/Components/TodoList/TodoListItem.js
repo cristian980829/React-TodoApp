@@ -2,9 +2,10 @@ import React, { useContext, useRef, useState } from 'react';
 import { TodoContext } from './TodoContext';
 import { TodoListTask } from './TodoListTask';
 
-export const TodoListItem = ( { todo, item } )=>{
+export const TodoListItem = ( { currentTodo } )=>{
 
-  const { dispatch } = useContext(TodoContext);
+  const { dispatch, state: { todo } } = useContext(TodoContext);
+  const item = todo.item;
   const formRef = useRef(null);
   const [state, setState] = useState(item);
 
@@ -27,24 +28,24 @@ export const TodoListItem = ( { todo, item } )=>{
   };
 
   return (
-    <li key={ todo.id } className="list-group-item">
-    <h2>{todo.name}</h2>
-    <button onClick={() => onDeleteToDo(todo)} className="btn btn-danger ms-2 mb-2">Eliminar lista</button>
+    <li key={ currentTodo.id } className="list-group-item">
+    <h2>{currentTodo.name}</h2>
+    <button onClick={() => onDeleteToDo(currentTodo)} className="btn btn-danger ms-2 mb-2">Eliminar lista</button>
     <form ref={formRef} className="d-flex mb-2">
       <input
         className="form-control me-2"
         type="text"
         name="name"
         placeholder="¿Qué piensas hacer hoy?"
-        defaultValue={(item.idTodo===todo.id) ? item.name : ''}
+        defaultValue={(item.idTodo===currentTodo.id) ? item.name : ''}
         onChange={(event) => {
-          setState({ ...state, name: event.target.value, id: todo.id })
+          setState({ ...state, name: event.target.value, id: currentTodo.id })
         }}>
       </input>
       {!item.id && <button className="btn btn-success" onClick={onAddTask}>Crear</button>}
     </form>
     <TodoListTask 
-        todo={todo}
+        currentTodo={currentTodo}
       />
     <hr/>
     </li>
