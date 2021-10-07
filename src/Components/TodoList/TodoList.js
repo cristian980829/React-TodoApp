@@ -11,10 +11,6 @@ export const TodoList = () => {
         localStorage.setItem('todos', JSON.stringify( todo ) );
     }, [todo]);
 
-  const onDeleteToDo = (todo) => { 
-    dispatch({ type: "delete-todo", id: todo.id })
-  };
-
   return (
     <ul className="list-group list-group-flush">
     {
@@ -22,8 +18,8 @@ export const TodoList = () => {
       <TodoListItem
         key={todo.id}
         todo={todo}
-        onDeleteToDo={onDeleteToDo}
         item={item}
+        dispatch={dispatch}
       />
     ))
     }
