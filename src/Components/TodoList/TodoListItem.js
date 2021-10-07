@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
+import { TodoContext } from './TodoContext';
 import { TodoListTask } from './TodoListTask';
 
-export const TodoListItem = ( { todo, item, dispatch } )=>{
+export const TodoListItem = ( { todo, item } )=>{
 
+  const { dispatch } = useContext(TodoContext);
   const formRef = useRef(null);
   const [state, setState] = useState(item);
 

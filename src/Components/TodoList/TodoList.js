@@ -3,7 +3,7 @@ import { TodoListItem } from "./TodoListItem";
 import { TodoContext } from './TodoContext';
 
 export const TodoList = () => {
-  const { dispatch, state: { todo } } = useContext(TodoContext);
+  const { state: { todo } } = useContext(TodoContext);
   const item = todo.item;
   const currentList = todo.list;
 
@@ -19,7 +19,6 @@ export const TodoList = () => {
         key={todo.id}
         todo={todo}
         item={item}
-        dispatch={dispatch}
       />
     ))
     }
