@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { TodoListTask } from './TodoListTask';
 
 export const TodoListItem = ( { todo, item, dispatch } )=>{
 
@@ -40,6 +41,9 @@ export const TodoListItem = ( { todo, item, dispatch } )=>{
       </input>
       {!item.id && <button className="btn btn-success" onClick={onAddTask}>Crear</button>}
     </form>
+    <TodoListTask 
+        todo={todo}
+      />
     <hr/>
     </li>
   )
