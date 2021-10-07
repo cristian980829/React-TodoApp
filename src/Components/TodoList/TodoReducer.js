@@ -5,5 +5,11 @@ export const TodoReducer = (state, action) => {
       return { ...state, todo: {list: todoUp, item: {}} }
     default:
       return state;
+    case 'delete-todo':
+      const todoUpDelete = state.todo;
+      const listUpdate = todoUpDelete.list.filter((item) => {
+        return item.id !== action.id;
+      });
+      return { ...state, todo: {list: listUpdate, item: {}} }
   }
 }
