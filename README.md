@@ -1,6 +1,6 @@
 # React App
 
-This is an practice project
+This is a practice project
 
 To-Do list and tasks
 
