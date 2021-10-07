@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { TodoContext } from './TodoContext';
 import Modals from '../Modal/Modals'
+import { types } from "../../types/types";
 
 export const TodoListTask = ( {currentTodo } ) => {
 
@@ -20,17 +21,17 @@ export const TodoListTask = ( {currentTodo } ) => {
     };
 
     dispatch({
-      type: "update-item",
+      type: types.UPDATE_ITEM,
       item: task
     });
   }
   
   const onEditT = (task) => {
-    dispatch({ type: "edit-item", item: task })
+    dispatch({ type: types.EDIT_ITEM, item: task })
   };
 
   const onDeleteTask = (id) => { 
-    dispatch({ type: "delete-task", id })
+    dispatch({ type: types.DELETE_TASK, id })
   };
 
   const onChange = (event, task) => {
@@ -40,7 +41,7 @@ export const TodoListTask = ( {currentTodo } ) => {
       completed: event.target.checked,
       idTodo: task.idTodo
     };
-    dispatch({ type: "update-item", item });
+    dispatch({ type: types.UPDATE_ITEM, item });
   };
 
   return (

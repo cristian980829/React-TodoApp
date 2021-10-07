@@ -1,0 +1,11 @@
+
+
+export const types = {
+    ADD_ITEM:  'ADD_ITEM',
+    DELETE_TODO: 'DELETE_TODO',
+    ADD_TASK: 'ADD_TASK',
+    UPDATE_ITEM: 'UPDATE_ITEM',
+    DELETE_TASK: 'DELETE_TASK',
+    EDIT_ITEM: 'EDIT_ITEM',
+    CANCEL_EDIT: 'CANCEL_EDIT',
+}

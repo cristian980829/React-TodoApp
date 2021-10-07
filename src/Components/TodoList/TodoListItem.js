@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { TodoContext } from './TodoContext';
 import { TodoListTask } from './TodoListTask';
+import { types } from "../../types/types";
 
 export const TodoListItem = ( { currentTodo } )=>{
 
@@ -11,20 +12,19 @@ export const TodoListItem = ( { currentTodo } )=>{
 
   const onAddTask = (e) => {
     e.preventDefault();
-    console.log(state);
     const task = {
       id: new Date().getTime(),
       name: state.name,
       completed: false,
       idTodo: state.id
     };
-      dispatch({ type: "add-task", item: task });
+      dispatch({ type: types.ADD_TASK, item: task });
       setState( { name: "" } );
       formRef.current.reset();
   }
 
   const onDeleteToDo = (todo) => { 
-    dispatch({ type: "delete-todo", id: todo.id })
+    dispatch({ type: types.DELETE_TODO, id: todo.id })
   };
 
   return (
@@ -37,7 +37,6 @@ export const TodoListItem = ( { currentTodo } )=>{
         type="text"
         name="name"
         placeholder="¿Qué piensas hacer hoy?"
-        defaultValue={(item.idTodo===currentTodo.id) ? item.name : ''}
         onChange={(event) => {
           setState({ ...state, name: event.target.value, id: currentTodo.id })
         }}>

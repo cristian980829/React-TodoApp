@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import { TodoContext } from './TodoContext';
+import { types } from "../../types/types";
 
 export const CreateTodoForm = () => {
   const formRefTodo = useRef(null);
@@ -15,7 +16,7 @@ export const CreateTodoForm = () => {
       tasks: []
     };
     todo.name = todo.name.trim();
-    dispatch({ type: "add-item", item: todo });
+    dispatch({ type: types.ADD_ITEM, item: todo });
     setState({ name: "" });
    formRefTodo.current.reset();
   }
